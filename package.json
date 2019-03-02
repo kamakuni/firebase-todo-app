@@ -1,0 +1,39 @@
+{
+  "name": "todo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --config ./webpack.config.js --mode development",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1",
+    "react-hot-loader": "^4.6.5",
+    "webpack": "^4.29.3",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.1.14"
+  },
+  "dependencies": {
+    "dotenv": "^6.2.0",
+    "firebase": "^5.8.4",
+    "prop-types": "^15.6.2",
+    "react-redux": "^6.0.0",
+    "react-redux-firebase": "^2.2.6",
+    "redux": "^4.0.1"
+  }
+}

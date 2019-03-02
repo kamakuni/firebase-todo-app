@@ -1,0 +1,16 @@
+{
+    "todos": {
+        "initdata1":{
+            "text": "initdata1",
+            "completed": false
+        },
+        "initdata2":{
+            "text": "initdata2",
+            "completed": false
+        },
+        "initdata3":{
+            "text": "initdata3",
+            "completed": false
+        }
+    }
+}
