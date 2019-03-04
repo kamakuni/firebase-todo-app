@@ -9,13 +9,28 @@ const firebaseQueries = [
 ];
 
 const getVisibleTodos = (todos, filter) => {
+    if(!todos) return todos
     switch (filter) {
         case VisibilityFilters.SHOW_ALL:
             return todos;
         case VisibilityFilters.SHOW_COMPLETED:
-            return todos.filter(t => t.completed)
+            return Object.keys(todos)
+            .filter(key => todos[key].completed)
+            .reduce((filtered, key) => {
+                    filtered[key] = todos[key];
+                    return filtered;
+                },
+                {}
+            )
         case VisibilityFilters.SHOW_ACTIVE:
-            return todos.filter(t => !t.completed)
+            return Object.keys(todos)
+            .filter(key => !todos[key].completed)
+            .reduce((filtered, key) => {
+                    filtered[key] = todos[key];
+                    return filtered
+                },
+                {}
+            )
         default:
             throw new Error(`Unknown filter: ${filter}`)
     }
