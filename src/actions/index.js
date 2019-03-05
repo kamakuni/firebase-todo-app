@@ -1,38 +1,23 @@
 import { firebaseDb } from '../firebase'
-/*
-const ref = firebaseDb.ref("todos");
 
-function loadTodos() {
-    // https://t-kojima.github.io/2018/08/13/0040-firebase-react-database/
-    return dispatch => {
-        ref.off()
-        ref.on('value',
-            (snapshot) => {dispatch(loadTodosSuccess(snapshot))},
-            (error) => {dispatch(loadTodosError(error))}
-        )
+export const addTodo = (text) => {
+    return (dispatch, getState, { getFirebase }) => {
+        dispatch({type : 'ADD_TODO_REQUEST'});
+        const firebase = getFirebase()
+        firebase.push('todos', {completed: false, text})
+        .then(() => {
+            dispatch({type: 'ADD_TODO_SUCCESS'})
+        }).catch(err => {
+            dispatch({type: 'ADD_TODO_ERROR', err})
+        })
     }
 }
-
-function loadTodosSuccess(snapshot) {
-    return {
-        type: 'TODOS_RECEIVE_DATA',
-        data: snapshot.val()
-    }
-}
-
-function loadTodosError(error) {
-    return {
-        type: 'TODOS_RECEIVE_ERROR',
-        message: error.message
-    }
-}
-*/
-let nextTodo = 0
-export const addTodo = (text) => ({
+    
+/*    {
     type: 'ADD_TODO',
     id: nextTodo++,
     text
-})
+}*/
 
 export const setVisibilityFilter = filter => ({
     type: 'SET_VISIBILITY_FILTER',

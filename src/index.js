@@ -3,6 +3,7 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { applyMiddleware, createStore, compose } from 'redux'
 import { reactReduxFirebase, getFirebase } from 'react-redux-firebase'
+import thunk from 'redux-thunk'
 import firebase from 'firebase'
 import rootReducer from './reducers'
 //import firebase from 'firebase'
@@ -12,7 +13,10 @@ import App from './components/App'
 import firebaseConfig from './firebase';
 
 firebase.initializeApp(firebaseConfig);
-const createStoreWithFirebase = compose(reactReduxFirebase(firebase, {}))(createStore);
+const createStoreWithFirebase = compose(
+    applyMiddleware(thunk.withExtraArgument({getFirebase})),
+    reactReduxFirebase(firebase, {})
+    )(createStore);
 const store = createStoreWithFirebase(rootReducer);
 
 render(
