@@ -19,7 +19,7 @@ Status.propTypes = {
 
 const mapStateToProps = state => {
     return {
-        notice: state.todos.otice
+        notice: state.todos.notice
     }
 }
 
