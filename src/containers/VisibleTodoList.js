@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
-import { toggleTodo, VisibilityFilters } from '../actions'
+import { toggleTodo } from '../actions/todos'
+import { VisibilityFilters } from '../actions/visibilityFilter'
 import TodoList from '../components/TodoList'
 import { compose } from 'redux'
 import { firebaseConnect } from 'react-redux-firebase'

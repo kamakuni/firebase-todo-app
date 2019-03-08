@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { addTodo } from '../actions'
+import { addTodo } from '../actions/todos'
 
 const AddTodo = ({ dispatch }) => {
     let input;
