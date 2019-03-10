@@ -9,6 +9,16 @@ const loginError = (err) => ({
     err
 })
 
+const logoutSuccess = () => ({
+    type: LOGOUT_SUCCESS
+})
+
+const logoutError = (err) => ({
+    type: LOGOUT_ERROR,
+    err
+})
+
+
 export const loginWithGoogle = () => {
     return (dispatch, getState, {getFirebase}) => {
         const firebase = getFirebase()
@@ -19,4 +29,16 @@ export const loginWithGoogle = () => {
             dispatch(loginError(err))
         })
     }
+}
+
+export const logout = () => {
+    return (dispatch, getState, {getFirebase}) => {
+        const firebase = getFirebase()
+        firebase.logout()
+        .then(() => {
+            dispatch(logoutSuccess())
+        }).catch(err => {
+            dispatch(logoutError(err))
+        })
+    } 
 }
