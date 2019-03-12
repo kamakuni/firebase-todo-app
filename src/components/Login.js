@@ -1,21 +1,22 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { isLoaded, isEmpty } from 'react-redux-firebase'
 import { loginWithGoogle, logout } from '../actions/auth'
+import PropTypes from 'prop-types'
 
-
-const Login = ({ auth, loginWithGoogle, logout }) => {
+let Login = ({ auth, loginWithGoogle, logout }) => {
     if (!isLoaded(auth)) {
         return (<div>Loginig in...</div>)
     }
     if (isEmpty(auth)) {
         return (
-            <button onClick="loginWithGoogle">Login with Google account</button>
+            <button onClick={loginWithGoogle}>Login with Google account</button>
         )
     }
     return (
         <div>
             {auth.displayName}
-            <button onCLick="logout">Logout</button>
+            <button onClick={logout}>Logout</button>
         </div>
     )
 }
