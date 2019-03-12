@@ -37,6 +37,10 @@ const getVisibleTodos = (todos, filter) => {
     }
 }
 
+const firebaseQueries = ({uid}) => (
+    [`todos/${uid}`]
+)
+
 const mapStateToProps = state => ({
     todos: getVisibleTodos(state.firebase.data.todos, state.visibilityFilter)
 })
