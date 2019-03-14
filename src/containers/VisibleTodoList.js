@@ -41,9 +41,11 @@ const firebaseQueries = ({uid}) => (
     [`todos/${uid}`]
 )
 
-const mapStateToProps = state => ({
-    todos: getVisibleTodos(state.firebase.data.todos, state.visibilityFilter)
-})
+const mapStateToProps = ({visibilityFilter, firebase: {data: {todos}}}, {uid}) => {
+    return {
+        todos: getVisibleTodos(todos && todos[uid], visibilityFilter)
+    }
+}
 
 const mapDispatchToProps = dispatch => ({
     toggleTodo: id => dispatch(toggleTodo(id))
