@@ -4,7 +4,7 @@ import Status from './Status'
 import AddTodo from '../containers/AddTodo'
 import VisibileTodoList from '../containers/VisibleTodoList'
 
-const TodoApp = () => (
+const TodoApp = ({uid, authenticating, authenticates}) => (
     <div>
         <AddTodo />
         <Status />
