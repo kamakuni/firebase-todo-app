@@ -16,7 +16,7 @@ const TodoApp = ({uid, authenticating, authenticated}) => {
         <div>
             <AddTodo />
             <Status />
-            <VisibileTodoList />
+            <VisibileTodoList uid={uid} />
             <Footer />
         </div>
     )
