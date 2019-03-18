@@ -3,6 +3,8 @@ import Footer from './Footer'
 import Status from './Status'
 import AddTodo from '../containers/AddTodo'
 import VisibileTodoList from '../containers/VisibleTodoList'
+import PropTypes from 'prop-types'
+import { isLoaded, isEmpty } from 'react-redux-firebase';
 
 const TodoApp = ({uid, authenticating, authenticated}) => {
 
@@ -22,6 +24,20 @@ const TodoApp = ({uid, authenticating, authenticated}) => {
     )
 }
 
+TodoApp.propTypes = {
+    uid : PropTypes.string,
+    authenticating : PropTypes.bool.isRequired,
+    authenticated : PropTypes.bool.isRequired
+}
 
+const mapStateToProps = ({firebase: {auth, auth: {uid}}}) => ({
+    uid,
+    authenticating: !isLoaded(auth),
+    authenticated: !isEmpty(auth)
+})
+
+TodoApp = connect(
+    mapStateToProps
+)(TodoApp)
 
 export default TodoApp
