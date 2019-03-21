@@ -36,8 +36,12 @@ const toggleTodoError = (text, completed, err) => ({
     err
 })
 
-export const addTodo = (text) => {
+export const addTodo = (uid, text) => {
     return (dispatch, getState, { getFirebase }) => {
+        if(!uid){
+            dispatch(notAuthenticatedOnTodoAction());
+            return;
+        }
         dispatch(addTodoRequest());
         const firebase = getFirebase()
         firebase.push('todos', {completed: false, text})
@@ -49,14 +53,18 @@ export const addTodo = (text) => {
     }
 }
 
-export const toggleTodo = (id) => {
+export const toggleTodo = (uid,id) => {
     return (dispatch, getState, {getFirebase}) => {
+        if (!uid) {
+            dispatch(notAuthenticatedOnTodoAction());
+            return;
+        }
         const firebase = getFirebase()
         const state = getState()
-        const todo = state.firebase.data.todos[id];
+        const todo = state.firebase.data.todos[uid][id];
         //{type: TOGGLE_TODO_REQUEST, text: todo.text, completed: !todo.completed}
         dispatch(toggleTodoRequest(todo.text, !todo.completed))
-        firebase.update(`todos/${id}`, {completed: !todo.completed})
+        firebase.update(`todos/${uid}/${id}`, {completed: !todo.completed})
         .then(() => {
             dispatch(toggleTodoSuccess(todo.text, !todo.completed));
         }).catch(err => {
