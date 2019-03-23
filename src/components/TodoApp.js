@@ -6,7 +6,7 @@ import VisibileTodoList from '../containers/VisibleTodoList'
 import PropTypes from 'prop-types'
 import { isLoaded, isEmpty } from 'react-redux-firebase';
 
-const TodoApp = ({uid, authenticating, authenticated}) => {
+let TodoApp = ({uid, authenticating, authenticated}) => {
 
     if (authenticating) {
         return <div>logging in</div>
