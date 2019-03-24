@@ -4,6 +4,7 @@ import Status from './Status'
 import AddTodo from '../containers/AddTodo'
 import VisibileTodoList from '../containers/VisibleTodoList'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import { isLoaded, isEmpty } from 'react-redux-firebase';
 
 let TodoApp = ({uid, authenticating, authenticated}) => {
