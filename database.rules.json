@@ -3,16 +3,4 @@
         ".read": true,
         ".write": false
     }
-}{
-    "rules": {
-      // 中略
-      "users": {
-        "$uid": {  // #1
-          ".read": true,  // #2
-          ".write": "$uid === auth.uid"  // #3
-        }
-      },
-      "$other": { ".validate": false }  // #4
-    }
-  }
-  
+}
