@@ -1,20 +1,18 @@
 {
     "rules": {
-      "todos": {
-        "$uid": {  
-          ".read": "$uid === auth.uid",  
-          ".write": "$uid === auth.uid",  
-          "$todoId": {  
-            ".validate": "newData.hasChildren(['text', 'completed'])",
-            "text": {
-              ".validate": "newData.isString()"
-            },
-            "completed": {
-              ".validate": "newData.isBoolean()"
-            },
-            "$other": { ".validate": false }
-          }
-        }
-      }
+        ".read": true,
+        ".write": false
     }
-}
+}{
+    "rules": {
+      // 中略
+      "users": {
+        "$uid": {  // #1
+          ".read": true,  // #2
+          ".write": "$uid === auth.uid"  // #3
+        }
+      },
+      "$other": { ".validate": false }  // #4
+    }
+  }
+  
