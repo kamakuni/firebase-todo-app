@@ -1,6 +1,20 @@
 {
     "rules": {
-        ".read": true,
-        ".write": false
+        "todos": {
+            "$uid": {
+                ".read": "$uid === auth.uid",
+                ".write": "$uid === auth.uid",
+                "$todoId": {
+                    ".validate": "newData.hasChildren(['text', 'completed'])",
+                    "text": {
+                        ".validate": "newData.isString()"
+                    },
+                    "completed": {
+                        ".validate": "newData.isBoolean()"
+                    },
+                    "$other": { ".validate": false }
+                }
+            }
+        }
     }
 }
