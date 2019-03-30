@@ -44,7 +44,7 @@ export const addTodo = (uid, text) => {
         }
         dispatch(addTodoRequest());
         const firebase = getFirebase()
-        firebase.push('todos/${uid}', {completed: false, text})
+        firebase.push('todos', {completed: false, text})
         .then(() => {
             dispatch(addTodoSuccess())
         }).catch(err => {
