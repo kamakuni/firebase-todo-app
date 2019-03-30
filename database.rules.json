@@ -15,13 +15,6 @@
                     "$other": { ".validate": false }
                 }
             }
-        },
-        "users": {
-            "$uid": {
-                ".read": true,
-                ".write": "$uid === auth.uid"
-            }
-        },
-        "$other": { ".validate": false }
+        }
     }
 }
