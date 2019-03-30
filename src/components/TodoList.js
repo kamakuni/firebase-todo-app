@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Todo from './Todo'
 import { isLoaded, isEmpty } from 'react-redux-firebase';
 
-const TodoList = ({ todos, toggleTodo }) => {
+const TodoList = ({ todos, onTodoClick }) => {
 
     if(!isLoaded(todos)) {
         return <div>Loading...</div>
@@ -14,7 +14,7 @@ const TodoList = ({ todos, toggleTodo }) => {
     return (
         <ul>
             {Object.keys(todos).map(key => (
-                <Todo key={key} {...todos[key]} onClick={() => toggleTodo(key)} />
+                <Todo key={key} {...todos[key]} onClick={() => onTodoClick(key)} />
             ))}
         </ul>
     )
@@ -27,7 +27,7 @@ TodoList.propTypes = {
             text: PropTypes.string.isRequired
         }),
     ),
-    toggleTodo: PropTypes.func.isRequired
+    onTodoClick: PropTypes.func.isRequired
 }
 
 export default TodoList
