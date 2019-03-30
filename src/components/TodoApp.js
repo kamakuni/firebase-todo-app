@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { isLoaded, isEmpty } from 'react-redux-firebase';
 
-const TodoApp = ({uid, authenticating, authenticated}) => {
+let TodoApp = ({uid, authenticating, authenticated}) => {
 
     if (authenticating) {
         return <div>logging in</div>
